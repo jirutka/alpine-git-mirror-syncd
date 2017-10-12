@@ -12,7 +12,7 @@ local concat = table.concat
 local sh = os.execute
 
 
-local VERSION = '0.0.0'
+local VERSION = '0.1.0'
 local CONFIG = os.getenv('CONFIG') or './config.lua'
 local DEBUG = os.getenv('DEBUG') ~= nil
 
