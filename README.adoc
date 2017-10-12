@@ -1,5 +1,7 @@
 = Alpine Git Mirror Sync
 
+Lua script that listens on MQTT and synchronizes Git mirrors when notified about changes.
+
 TODO
 
 
