@@ -1,0 +1,23 @@
+-- Note: This must be valid Lua file.
+
+-- Address of the MQTT server.
+mqtt_host = 'msg.alpinelinux.org'
+
+-- Port of the MQTT server.
+mqtt_port = 1883
+
+-- A list of MQTT topics to listen on.
+mqtt_topics = {
+  'git/aports/+',
+}
+
+-- Template of an origin URI.
+-- Placeholder will be replaced by the repo name from MQTT message.
+origin_url = 'git://git.alpinelinux.org/%s'
+
+-- Template of a mirror URI.
+-- Placeholder will be replaced by the repo name from MQTT message.
+mirror_url = 'git@github.com:example/%s.git'
+
+-- Path of directory where to clone repositories.
+temp_dir = '/var/tmp/git-mirror-sync'
