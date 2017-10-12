@@ -12,6 +12,7 @@ local concat = table.concat
 local sh = os.execute
 
 
+local VERSION = '0.0.0'
 local CONFIG = os.getenv('CONFIG') or './config.lua'
 local DEBUG = os.getenv('DEBUG') ~= nil
 
@@ -154,6 +155,7 @@ client.ON_MESSAGE = function(mid, topic, payload)
   end
 end
 
+log('INFO: Starting git-mirror-sync '..VERSION)
 log('INFO: Connecting to %s:%s' % { conf.mqtt_host, conf.mqtt_port })
 client:connect(conf.mqtt_host, conf.mqtt_port, conf.mqtt_keepalive)
 client:loop_forever()
