@@ -159,7 +159,7 @@ client.ON_MESSAGE = function(mid, topic, payload)
   end
 end
 
-log('INFO: Starting git-mirror-sync '..VERSION)
+log('INFO: Starting git-mirror-syncd '..VERSION)
 log('INFO: Connecting to %s:%s' % { conf.mqtt_host, conf.mqtt_port })
 client:connect(conf.mqtt_host, conf.mqtt_port, conf.mqtt_keepalive)
 client:loop_forever()

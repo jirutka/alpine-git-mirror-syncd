@@ -1,10 +1,10 @@
 #!/sbin/openrc-run
 
 : ${command_user:="nobody"}
-: ${cfgfile:="/etc/git-mirror-sync/config.lua"}
+: ${cfgfile:="/etc/git-mirror-syncd/config.lua"}
 : ${logfile:="/var/log/$RC_SVCNAME.log"}
 
-command="/usr/bin/git-mirror-sync"
+command="/usr/bin/git-mirror-syncd"
 command_background="yes"
 
 start_stop_daemon_args="

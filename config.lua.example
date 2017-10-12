@@ -20,7 +20,7 @@ origin_url = 'git://git.alpinelinux.org/%s'
 mirror_url = 'git@github.com:example/%s.git'
 
 -- SSH command (incl. arguments) to use for clonning/pushing to remote.
-ssh_command = 'ssh -i /etc/git-mirror-sync/id_rsa -o StrictHostKeyChecking=no'
+ssh_command = 'ssh -i /etc/git-mirror-syncd/id_rsa -o StrictHostKeyChecking=no'
 
 -- Path of directory where to clone repositories.
-temp_dir = '/var/tmp/git-mirror-sync'
+temp_dir = '/var/tmp/git-mirror-syncd'
