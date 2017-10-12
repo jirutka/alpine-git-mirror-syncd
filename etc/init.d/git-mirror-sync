@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+
+: ${command_user:="nobody"}
+: ${cfgfile:="/etc/$RC_SVCNAME.conf"}
+: ${logfile:="/var/log/$RC_SVCNAME.log"}
+
+command="/usr/bin/git-mirror-sync"
+command_background="yes"
+
+start_stop_daemon_args="
+	--interpreted
+	--user $command_user
+	--env CONFIG=$cfgfile
+	--stdout=$logfile
+	--stderr=$logfile"
+pidfile="/run/$RC_SVCNAME.pid"
+
+required_files="$cfgfile"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	checkpath -f -o "$command_user" "$logfile"
+}
