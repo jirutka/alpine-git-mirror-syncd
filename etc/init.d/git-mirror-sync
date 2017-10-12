@@ -1,7 +1,7 @@
 #!/sbin/openrc-run
 
 : ${command_user:="nobody"}
-: ${cfgfile:="/etc/$RC_SVCNAME.conf"}
+: ${cfgfile:="/etc/git-mirror-sync/config.lua"}
 : ${logfile:="/var/log/$RC_SVCNAME.log"}
 
 command="/usr/bin/git-mirror-sync"
