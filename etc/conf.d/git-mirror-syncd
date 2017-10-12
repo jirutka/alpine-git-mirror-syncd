@@ -1,0 +1,11 @@
+# Configuration for /etc/init.d/git-mirror-syncd
+
+# User to run the daemon as.
+# You should create new user for this daemon and change this variable.
+#command_user="nobody"
+
+# Path of the configuration file.
+#cfgfile="/etc/git-mirror-syncd/config.lua"
+
+# Path of the log file.
+#logfile="/var/log/$RC_SVCNAME.log"
