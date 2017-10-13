@@ -23,4 +23,4 @@ mirror_url = 'git@github.com:example/%s.git'
 ssh_command = 'ssh -i /etc/git-mirror-syncd/id_rsa -o StrictHostKeyChecking=no'
 
 -- Path of directory where to clone repositories.
-temp_dir = '/var/tmp/git-mirror-syncd'
+cache_dir = '/var/tmp/git-mirror-syncd'

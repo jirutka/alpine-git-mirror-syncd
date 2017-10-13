@@ -23,7 +23,7 @@ local conf = {
   mqqt_keepalive = 300,
   mqtt_topics = {},
   log_date_format = '%Y-%m-%dT%H:%M:%S',
-  temp_dir = './tmp',
+  cache_dir = './tmp',
   origin_url = nil,
   mirror_url = nil,
   ssh_command = 'ssh',
@@ -79,7 +79,7 @@ end
 local function repo_conf (repo_name)
   return {
     repo_name   = repo_name,
-    clone_dir   = conf.temp_dir..'/'..repo_name..'.git',
+    clone_dir   = conf.cache_dir..'/'..repo_name..'.git',
     origin_url  = conf.origin_url:format(repo_name),
     mirror_url  = conf.mirror_url:format(repo_name),
     git_opts    = (DEBUG and '' or '--quiet'),
