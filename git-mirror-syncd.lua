@@ -90,7 +90,7 @@ end
 local function git_clone (repo_conf)
   return sh([[
     set -e
-    mkdir -p "$(dirname "${temp_dir}")"
+    mkdir -p "$(dirname "${clone_dir}")"
     export GIT_SSH_COMMAND="${ssh_command}"
     git clone --mirror "${origin_url}" ${git_opts} "${clone_dir}"
     git -C "${clone_dir}" remote set-url --push origin "${mirror_url}"
