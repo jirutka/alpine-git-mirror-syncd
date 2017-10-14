@@ -29,9 +29,4 @@ start_pre() {
 	if [ "$cachedir" ]; then
 		checkpath -d -m 750 -o "$command_user" "$cachedir"
 	fi
-	if [ "${homedir:-}" ]; then
-		start_stop_daemon_args="$start_stop_daemon_args
-			--chdir $homedir
-			--env HOME=$homedir"
-	fi
 }
