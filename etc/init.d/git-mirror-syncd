@@ -3,6 +3,7 @@
 : ${command_user:="nobody"}
 : ${cfgfile:="/etc/git-mirror-syncd/config.lua"}
 : ${logfile:="/var/log/$RC_SVCNAME.log"}
+: ${cachedir:="/var/tmp/git-mirror-syncd"}
 
 command="/usr/bin/git-mirror-syncd"
 command_background="yes"
@@ -11,6 +12,7 @@ start_stop_daemon_args="
 	--interpreted
 	--user $command_user
 	--env CONFIG=$cfgfile
+	--env CACHE_DIR=$cachedir
 	--stdout=$logfile
 	--stderr=$logfile"
 pidfile="/run/$RC_SVCNAME.pid"
@@ -22,5 +24,14 @@ depend() {
 }
 
 start_pre() {
-	checkpath -f -o "$command_user" "$logfile"
+	checkpath -f -o "$command_user" "$logfile" || return 1
+
+	if [ "$cachedir" ]; then
+		checkpath -d -m 750 -o "$command_user" "$cachedir"
+	fi
+	if [ "${homedir:-}" ]; then
+		start_stop_daemon_args="$start_stop_daemon_args
+			--chdir $homedir
+			--env HOME=$homedir"
+	fi
 }

@@ -9,3 +9,10 @@
 
 # Path of the log file.
 #logfile="/var/log/$RC_SVCNAME.log"
+
+# Path of directory where to cache mirrored repositories.
+#cachedir="/var/tmp/git-mirror-syncd"
+
+# Path to set as $HOME and change into it before starting process.
+# SSH client will create its .ssh directory here.
+#homedir=""
