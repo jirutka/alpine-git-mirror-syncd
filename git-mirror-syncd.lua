@@ -20,8 +20,10 @@ local DEBUG = os.getenv('DEBUG') ~= nil
 local conf = {
   mqtt_host = nil,
   mqtt_port = 1883,
+  mqtt_tls = false,
   mqtt_keepalive = 300,
   mqtt_topics = {},
+  tls_ca_path = '/etc/ssl/certs',
   log_date_format = '%Y-%m-%dT%H:%M:%S',
   cache_dir = './tmp',
   origin_url = nil,
@@ -160,6 +162,14 @@ client.ON_MESSAGE = function(mid, topic, payload)
 end
 
 log('INFO: Starting git-mirror-syncd '..VERSION)
+
 log('INFO: Connecting to %s:%s' % { conf.mqtt_host, conf.mqtt_port })
+if conf.mqtt_tls then
+  if is_dir(conf.tls_ca_path) then
+    client:tls_set(nil, conf.tls_ca_path)
+  else
+    client:tls_set(conf.tls_ca_path)
+  end
+end
 client:connect(conf.mqtt_host, conf.mqtt_port, conf.mqtt_keepalive)
 client:loop_forever()
