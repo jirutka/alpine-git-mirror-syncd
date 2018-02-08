@@ -5,6 +5,14 @@ Lua script that listens on MQTT and synchronizes Git mirrors when notified about
 TODO
 
 
+== Requirements
+
+* Lua 5.1
+* https://luarocks.org/modules/karlp/lua-cjson[lua-cjson]
+* https://luarocks.org/modules/karlp/lua-mosquitto[lua-mosquitto]
+* git
+
+
 == License
 
 This project is licensed under http://opensource.org/licenses/MIT/[MIT License].
