@@ -20,7 +20,7 @@ local DEBUG = os.getenv('DEBUG') ~= nil
 local conf = {
   mqtt_host = nil,
   mqtt_port = 1883,
-  mqqt_keepalive = 300,
+  mqtt_keepalive = 300,
   mqtt_topics = {},
   log_date_format = '%Y-%m-%dT%H:%M:%S',
   cache_dir = './tmp',
