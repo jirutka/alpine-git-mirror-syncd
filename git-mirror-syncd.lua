@@ -146,14 +146,20 @@ end
 client.ON_MESSAGE = function(mid, topic, payload)
 
   local ok, payload = pcall(json.decode, payload)
-  if not ok or not payload.repo then
-    log('ERROR: Failed to encode payload from topic '..topic)
+  if not ok then
+    log('ERROR: Failed to encode JSON payload from topic '..topic)
+    return
+  end
+  local repo_name = payload.repo
+
+  if not (repo_name or ''):match('^[%w%._/-]+$') then
+    log('ERROR: Invalid repository name: '..tostring(repo_name))
     return
   end
 
-  log('INFO: Synchronizing mirror '..payload.repo)
+  log('INFO: Synchronizing mirror '..repo_name)
 
-  local ok, err = sync_mirror(payload.repo)
+  local ok, err = sync_mirror(repo_name)
   if ok then
     log('INFO: Completed')
   else
